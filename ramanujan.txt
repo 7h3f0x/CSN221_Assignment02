@@ -1,0 +1,62 @@
+Name : Shubhang Tripathi
+Enrollment Number : 18114074
+Batch : O3
+
+
+
+/* Algorithm for finding the number */
+int i,k,x,y,z;
+for(i=0;;i++){
+    k=0;
+    for(x=1;x*x*x<i;x++){
+        for(y=x+1;x*x*x+y*y*y<=i;y++){
+
+            if(x*x*x+y*y*y==i){
+                 k++;
+                 break;          
+            }
+        }
+
+    }
+     if(k==2){
+            printf("%d\n", i);
+            exit(0);
+        }
+    }
+
+
+/* My SimpleRISC code for it */
+
+mov r0,-1
+mov r1,0
+loop0:
+	cmp r1,2
+	beq exit
+	add r0,r0,1
+	mov r2,0
+	loop1:
+		add r2,r2,1
+		mov r4,r2
+		mul r4,r4,r2
+		mul r4,r4,r2
+		cmp r4,r0
+		bgt loop0
+		be loop0
+		mov r3,r2
+		loop2:
+			add r3,r2,1
+			mov r5,r3
+			mul r5,r5,r3
+			mul r5,r5,r3
+			add r6,r5,r4
+			cmp r6,r0
+			bgt loop1
+			be if1
+			b loop2
+
+			if1:
+				add r1,r1,1
+				b loop1
+
+
+/* Answer Stored in r0 */
